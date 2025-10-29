@@ -11,22 +11,40 @@ public class InputView {
     private static final String PROMPT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public static int readPurchaseAmount() {
-        System.out.println(PROMPT_PURCHASE_AMOUNT);
-        String input = Console.readLine();
-        return InputValidator.validateAndParsePurchaseAmount(input);
+        while (true) {
+            try {
+                System.out.println(PROMPT_PURCHASE_AMOUNT);
+                String input = Console.readLine();
+                return InputValidator.validateAndParsePurchaseAmount(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public static List<Integer> readWinningNumbers() {
-        System.out.println();
-        System.out.println(PROMPT_WINNING_NUMBERS);
-        String input = Console.readLine();
-        return InputValidator.validateAndParseWinningNumbers(input);
+        while (true) {
+            try {
+                System.out.println();
+                System.out.println(PROMPT_WINNING_NUMBERS);
+                String input = Console.readLine();
+                return InputValidator.validateAndParseWinningNumbers(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public static int readBonusNumber(List<Integer> winningNumbers) {
-        System.out.println();
-        System.out.println(PROMPT_BONUS_NUMBER);
-        String input = Console.readLine();
-        return InputValidator.validateAndParseBonusNumber(input, winningNumbers);
+        while (true) {
+            try {
+                System.out.println();
+                System.out.println(PROMPT_BONUS_NUMBER);
+                String input = Console.readLine();
+                return InputValidator.validateAndParseBonusNumber(input, winningNumbers);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
