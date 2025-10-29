@@ -11,26 +11,26 @@ class WinningNumbersTest {
 
     @Test
     void 정상적인_당첨_번호로_객체를_생성한다() {
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6));
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(winningNumbers.getNumbers()).containsExactly(1, 2, 3, 4, 5, 6);
     }
 
     @Test
     void 당첨_번호는_자동으로_오름차순_정렬된다() {
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(6, 5, 4, 3, 2, 1));
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(6, 5, 4, 3, 2, 1), 7);
         assertThat(winningNumbers.getNumbers()).containsExactly(1, 2, 3, 4, 5, 6);
     }
 
     @Test
     void 당첨_번호가_6개가_아니면_예외가_발생한다() {
-        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5)))
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5), 7))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
     }
 
     @Test
     void 당첨_번호에_중복이_있으면_예외가_발생한다() {
-        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 5)))
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 5), 7))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]")
                 .hasMessageContaining("중복");
@@ -38,7 +38,23 @@ class WinningNumbersTest {
 
     @Test
     void 당첨_번호가_범위를_벗어나면_예외가_발생한다() {
-        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 46)))
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 46), 7))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]")
+                .hasMessageContaining("1부터 45");
+    }
+
+    @Test
+    void 보너스_번호가_당첨_번호와_중복되면_예외가_발생한다() {
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 6))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]")
+                .hasMessageContaining("중복");
+    }
+
+    @Test
+    void 보너스_번호가_범위를_벗어나면_예외가_발생한다() {
+        assertThatThrownBy(() -> new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 46))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]")
                 .hasMessageContaining("1부터 45");

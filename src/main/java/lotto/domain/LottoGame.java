@@ -6,18 +6,16 @@ import lotto.generator.RandomLottoNumberGenerator;
 public class LottoGame {
     private final Lottos lottos;
     private final WinningNumbers winningNumbers;
-    private final int bonusNumber;
 
-    private LottoGame(Lottos lottos, WinningNumbers winningNumbers, int bonusNumber) {
+    private LottoGame(Lottos lottos, WinningNumbers winningNumbers) {
         this.lottos = lottos;
         this.winningNumbers = winningNumbers;
-        this.bonusNumber = bonusNumber;
     }
 
-    public static LottoGame create(int purchaseAmount, WinningNumbers winningNumbers, int bonusNumber) {
+    public static LottoGame create(int purchaseAmount, WinningNumbers winningNumbers) {
         LottoGenerator lottoGenerator = new LottoGenerator(new RandomLottoNumberGenerator());
         Lottos lottos = Lottos.generateLottos(purchaseAmount, lottoGenerator);
-        return new LottoGame(lottos, winningNumbers, bonusNumber);
+        return new LottoGame(lottos, winningNumbers);
     }
 
     public Lottos getLottos() {
@@ -25,6 +23,6 @@ public class LottoGame {
     }
 
     public LottoResult play() {
-        return lottos.calculateResult(winningNumbers, bonusNumber);
+        return lottos.calculateResult(winningNumbers);
     }
 }

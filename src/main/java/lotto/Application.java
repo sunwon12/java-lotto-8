@@ -12,10 +12,10 @@ public class Application {
     public static void main(String[] args) {
         int purchaseAmount = InputView.readPurchaseAmount();
         List<Integer> winningNumbersList = InputView.readWinningNumbers();
-        WinningNumbers winningNumbers = new WinningNumbers(winningNumbersList);
         int bonusNumber = InputView.readBonusNumber(winningNumbersList);
+        WinningNumbers winningNumbers = new WinningNumbers(winningNumbersList, bonusNumber);
 
-        LottoGame game = LottoGame.create(purchaseAmount, winningNumbers, bonusNumber);
+        LottoGame game = LottoGame.create(purchaseAmount, winningNumbers);
         OutputView.printLottos(game.getLottos());
 
         LottoResult result = game.play();

@@ -12,8 +12,8 @@ class LottoGameTest {
 
     @Test
     void 로또_게임을_생성하고_결과를_계산한다() {
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6));
-        LottoGame game = LottoGame.create(8000, winningNumbers, 7);
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoGame game = LottoGame.create(8000, winningNumbers);
 
         assertThat(game.getLottos().getCount()).isEqualTo(8);
     }
@@ -30,10 +30,9 @@ class LottoGameTest {
         LottoGenerator lottoGenerator = new LottoGenerator(fixedGenerator);
         Lottos lottos = Lottos.generateLottos(3000, lottoGenerator);
 
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6));
-        int bonusNumber = 7;
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 7);
 
-        LottoResult result = lottos.calculateResult(winningNumbers, bonusNumber);
+        LottoResult result = lottos.calculateResult(winningNumbers);
 
         assertThat(result.getCount(LottoRank.FIRST)).isEqualTo(1);
         assertThat(result.getCount(LottoRank.SECOND)).isEqualTo(1);

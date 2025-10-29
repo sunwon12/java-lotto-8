@@ -30,10 +30,10 @@ public class Lottos {
         return lottos.size();
     }
 
-    public LottoResult calculateResult(WinningNumbers winningNumbers, int bonusNumber) {
+    public LottoResult calculateResult(WinningNumbers winningNumbers) {
         LottoResult result = new LottoResult();
         for (Lotto lotto : lottos) {
-            LottoRank rank = winningNumbers.match(lotto, bonusNumber);
+            LottoRank rank = winningNumbers.match(lotto);
             result.addResult(rank);
         }
         return result;
