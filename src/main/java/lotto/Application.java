@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.LottoRank;
+import lotto.domain.LottoResult;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
@@ -17,5 +19,17 @@ public class Application {
         WinningNumbers winningNumbers = new WinningNumbers(winningNumbersList);
 
         int bonusNumber = InputView.readBonusNumber(winningNumbersList);
+
+        LottoResult lottoResult = calculateResult(lottos, winningNumbers, bonusNumber);
+        OutputView.printResult(lottoResult, purchaseAmount);
+    }
+
+    private static LottoResult calculateResult(Lottos lottos, WinningNumbers winningNumbers, int bonusNumber) {
+        LottoResult lottoResult = new LottoResult();
+        for (Lotto lotto : lottos.getLottos()) {
+            LottoRank rank = winningNumbers.match(lotto, bonusNumber);
+            lottoResult.addResult(rank);
+        }
+        return lottoResult;
     }
 }
