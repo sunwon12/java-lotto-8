@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
 import lotto.generator.LottoGenerator;
 import lotto.generator.RandomLottoNumberGenerator;
 
@@ -26,11 +25,6 @@ public class LottoGame {
     }
 
     public LottoResult play() {
-        LottoResult result = new LottoResult();
-        for (Lotto lotto : lottos.getLottos()) {
-            LottoRank rank = winningNumbers.match(lotto, bonusNumber);
-            result.addResult(rank);
-        }
-        return result;
+        return lottos.calculateResult(winningNumbers, bonusNumber);
     }
 }
