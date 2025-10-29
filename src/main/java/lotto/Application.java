@@ -4,6 +4,8 @@ import lotto.domain.LottoRank;
 import lotto.domain.LottoResult;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumbers;
+import lotto.generator.LottoGenerator;
+import lotto.generator.RandomLottoNumberGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -12,7 +14,8 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         int purchaseAmount = InputView.readPurchaseAmount();
-        Lottos lottos = Lottos.generateLottos(purchaseAmount);
+        LottoGenerator lottoGenerator = new LottoGenerator(new RandomLottoNumberGenerator());
+        Lottos lottos = Lottos.generateLottos(purchaseAmount, lottoGenerator);
         OutputView.printLottos(lottos);
 
         List<Integer> winningNumbersList = InputView.readWinningNumbers();

@@ -97,7 +97,7 @@
 - [x] JUnit5 + AssertJ로 기능 단위 테스트 작성
 - [x] 정상 입력·정상 결과 확인
 - [x] 잘못된 입력(범위/중복/비숫자/공백 등) 시 예외 확인
-- [ ] Random값 등 테스트 시 Mock/Stub 활용
+- [x] Random값 등 테스트 시 Mock/Stub 활용
 
 ***
 
@@ -126,7 +126,7 @@
 
 - [x] 입력/출력 분리(`InputView`, `OutputView`)
 - [x] 로또/당첨/결과 객체 캡슐화(`Lotto`, `WinningNumbers`, `LottoResult`, 등)
-- [ ] 랜덤 추출 전략 주입 가능 구조(테스트 편의)
+- [x] 랜덤 추출 전략 주입 가능 구조(테스트 편의)
 - [x] 등수 계산/결과 출력 분리(확장 용이)
 
 ***
@@ -149,7 +149,7 @@
 ### (5) 기타 기술 결정
 
 - [x] `LottoGame`, `Lotto`, `WinningNumbers`, `LottoRank(enum)` 역할별 분리
-- [ ] 전략/팩토리 패턴(랜덤/테스트 분리)
-- [ ] 테스트 용이성·유지보수성
+- [x] 전략/팩토리 패턴(랜덤/테스트 분리)
+- [x] 테스트 용이성·유지보수성
 - [x] `IllegalArgumentException` 등 명확한 예외 처리
 - [ ] 커밋 및 README.md 관리
