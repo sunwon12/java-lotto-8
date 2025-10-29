@@ -59,8 +59,8 @@
 - [x] `Application` 클래스의 `main()`에서 프로그램이 시작된다.
 - [x] 입력 처리에 `camp.nextstep.edu.missionutils.Console`을 사용한다.
 - [x] 랜덤 값 추출에 `camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange()`를 사용한다.
-- [ ] `System.exit()`를 호출하지 않는다.
-- [ ] `build.gradle`을 수정하지 않는다.
+- [x] `System.exit()`를 호출하지 않는다.
+- [x] `build.gradle`을 수정하지 않는다.
 
 ***
 
@@ -103,12 +103,12 @@
 
 ### 코드 품질 요구사항
 
-- [ ] 한 함수(메서드)는 한 일만 한다
-- [ ] 인덴트(depth)는 최대 2단계
-- [ ] 3항 연산자 및 else/switch/case 금지, if-return 분기 사용
-- [ ] Java 코드 컨벤션 준수
-- [ ] 기능 단위 커밋, AngularJS 커밋 컨벤션 적용
-- [ ] `README.md`에 기능 목록 및 구현 결과 기록
+- [x] 한 함수(메서드)는 한 일만 한다
+- [x] 인덴트(depth)는 최대 2단계
+- [x] 3항 연산자 및 else/switch/case 금지, if-return 분기 사용
+- [x] Java 코드 컨벤션 준수
+- [x] 기능 단위 커밋, AngularJS 커밋 컨벤션 적용
+- [x] `README.md`에 기능 목록 및 구현 결과 기록
 
 ***
 
@@ -118,7 +118,7 @@
 
 - [x] 금액/번호/보너스 입력값 비어 있거나 잘못 입력 시 → 예외 및 재입력
 - [x] 범위/중복/공백/trim(), 당첨 번호-보너스 중복 판단
-- [ ] 수익률/출력 포맷 주의
+- [x] 수익률/출력 포맷 주의
 
 ***
 
@@ -135,14 +135,14 @@
 
 - [x] `Lottos`/`WinningNumbers` 일급 컬렉션
 - [x] 각 도메인 객체가 유효성 검사 및 책임 수행
-- [ ] 컨트롤러 역할 최소화
+- [x] 컨트롤러 역할 최소화
 
 ***
 
 ### (4) 코드 가독성/매직 넘버 제거
 
 - [x] 의미 있는 상수(`PRICE_PER_TICKET = 1000`, `LOTTO_NUMBER_COUNT = 6`, `LOTTO_RANGE_MIN/MAX`)
-- [ ] 요구 변경, 유지보수 시 상수 수정만으로 반영
+- [x] 요구 변경, 유지보수 시 상수 수정만으로 반영
 
 ***
 
@@ -152,4 +152,4 @@
 - [x] 전략/팩토리 패턴(랜덤/테스트 분리)
 - [x] 테스트 용이성·유지보수성
 - [x] `IllegalArgumentException` 등 명확한 예외 처리
-- [ ] 커밋 및 README.md 관리
+- [x] 커밋 및 README.md 관리

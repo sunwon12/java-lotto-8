@@ -29,4 +29,13 @@ public class Lottos {
     public int getCount() {
         return lottos.size();
     }
+
+    public LottoResult calculateResult(WinningNumbers winningNumbers, int bonusNumber) {
+        LottoResult result = new LottoResult();
+        for (Lotto lotto : lottos) {
+            LottoRank rank = winningNumbers.match(lotto, bonusNumber);
+            result.addResult(rank);
+        }
+        return result;
+    }
 }

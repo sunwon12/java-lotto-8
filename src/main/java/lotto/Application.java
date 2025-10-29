@@ -1,11 +1,8 @@
 package lotto;
 
-import lotto.domain.LottoRank;
+import lotto.domain.LottoGame;
 import lotto.domain.LottoResult;
-import lotto.domain.Lottos;
 import lotto.domain.WinningNumbers;
-import lotto.generator.LottoGenerator;
-import lotto.generator.RandomLottoNumberGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,25 +11,14 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         int purchaseAmount = InputView.readPurchaseAmount();
-        LottoGenerator lottoGenerator = new LottoGenerator(new RandomLottoNumberGenerator());
-        Lottos lottos = Lottos.generateLottos(purchaseAmount, lottoGenerator);
-        OutputView.printLottos(lottos);
-
         List<Integer> winningNumbersList = InputView.readWinningNumbers();
         WinningNumbers winningNumbers = new WinningNumbers(winningNumbersList);
-
         int bonusNumber = InputView.readBonusNumber(winningNumbersList);
 
-        LottoResult lottoResult = calculateResult(lottos, winningNumbers, bonusNumber);
-        OutputView.printResult(lottoResult, purchaseAmount);
-    }
+        LottoGame game = LottoGame.create(purchaseAmount, winningNumbers, bonusNumber);
+        OutputView.printLottos(game.getLottos());
 
-    private static LottoResult calculateResult(Lottos lottos, WinningNumbers winningNumbers, int bonusNumber) {
-        LottoResult lottoResult = new LottoResult();
-        for (Lotto lotto : lottos.getLottos()) {
-            LottoRank rank = winningNumbers.match(lotto, bonusNumber);
-            lottoResult.addResult(rank);
-        }
-        return lottoResult;
+        LottoResult result = game.play();
+        OutputView.printResult(result, purchaseAmount);
     }
 }
