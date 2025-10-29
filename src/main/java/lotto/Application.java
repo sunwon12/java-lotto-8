@@ -15,5 +15,7 @@ public class Application {
 
         List<Integer> winningNumbersList = InputView.readWinningNumbers();
         WinningNumbers winningNumbers = new WinningNumbers(winningNumbersList);
+
+        int bonusNumber = InputView.readBonusNumber(winningNumbersList);
     }
 }
