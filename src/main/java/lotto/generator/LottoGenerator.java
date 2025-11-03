@@ -1,6 +1,6 @@
 package lotto.generator;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.constant.LottoConstants;
 
 import java.util.List;
