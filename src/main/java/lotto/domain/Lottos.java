@@ -31,10 +31,9 @@ public class Lottos {
 
     public LottoResult calculateResult(WinningNumbers winningNumbers) {
         LottoResult result = new LottoResult();
-        for (Lotto lotto : lottos) {
-            LottoRank rank = winningNumbers.match(lotto);
-            result.addResult(rank);
-        }
+        lottos.stream()
+                .map(winningNumbers::match)
+                .forEach(result::addResult);
         return result;
     }
 }
